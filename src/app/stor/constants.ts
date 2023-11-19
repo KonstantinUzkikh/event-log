@@ -34,12 +34,12 @@ export const performers: TPerformer[] = [
   {
     performerId: 104,
     name: 'Лавочкин А.В.',
-    avatar: Avatars.AvatarGreen,
+    avatar: Avatars.avatarGreenBlue,
   },
   {
     performerId: 105,
     name: 'Ольшанская Е.Г.',
-    avatar: Avatars.AvatarYellow,
+    avatar: Avatars.avatarRedOrange,
   },
 ]
 

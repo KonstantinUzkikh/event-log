@@ -47,21 +47,21 @@ export default function EventsCards({ onFilter }: { onFilter: (events: TEvent[])
           className={clsx('text-left md:w-25rem cursor-pointer p-2 rounded-[10px]', event.isRead && 'opacity-40')}
         >
           <div className='flex justify-between items-start gap-2 text-fz-small'>
-            <div className='flex flex-col gap-1'>
-              <div className='grid grid-cols-[7rem_12rem] justify-start items-center gap-1'>
-                <span className='bg-color-base-20-day'>Важность</span>
+            <div className='flex flex-col gap-2'>
+              <div className='grid grid-cols-[7.5rem_11.5rem] justify-start items-center gap-3'>
+                <span className='flex h-[2.6rem] w-[7.8rem] items-center rounded-[5px] p-2 bg-color-base-20-day'>Важность</span>
                 <span>{event.importance}</span>
               </div>
-              <div className='grid grid-cols-[7rem_12rem] justify-start items-center gap-1'>
-                <span className='bg-color-base-20-day'>Оборудование</span>
+              <div className='grid grid-cols-[7.5rem_11.5rem] justify-start items-center gap-3'>
+                <span className='flex h-[2.6rem] w-[7.8rem] items-center rounded-[5px] p-2 bg-color-base-20-day'>Оборудование</span>
                 <span>{event.equipment}</span>
               </div>
-              <div className='grid grid-cols-[7rem_12rem] justify-start items-center gap-1'>
-                <span className='flex h-[32px] items-center bg-color-base-20-day'>Сообщение</span>
+              <div className='grid grid-cols-[7.5rem_11.5rem] justify-start items-center gap-3'>
+                <span className='flex h-[2.6rem] w-[7.8rem] items-center rounded-[5px] p-2 bg-color-base-20-day'>Сообщение</span>
                 <span>{event.message}</span>
               </div>
             </div>
-            <div className='h-full flex flex-col justify-between gap-1'>
+            <div className='h-full flex flex-col justify-between gap-2'>
               <span className='flex items-center justify-center'><event.performer.avatar /></span>
               <span className='flex items-center justify-center'>{event.performer.name}</span>
             </div>
