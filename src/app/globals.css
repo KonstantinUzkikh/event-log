@@ -1,19 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import 'primereact/resources/themes/saga-blue/theme.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+
+@layer tailwind-base, primereact, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --base-100-day: #232529;
+  --base-20-day: #e1e2e5;
+  --base-0-day: #fff;
+  --shadow-modal-window: 0px 8px 28px -6px rgba(28, 40, 64, 0.12), 0px 18px 88px -4px rgba(28, 40, 64, 0.14);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}
+
+html {
+  color: var(--base-100-day);
 }
 
 body {
@@ -24,4 +47,71 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    font-family: var(--font-family);
+  }
+
+.card {
+  background: var(--surface-card);
+  padding: .3rem;
+  border-radius: 10px;
+}
+
+.p-row-odd {
+  background-color:#f0f0f0;
+}
+
+.p-dropdown {
+  padding: 0;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: theme('screens.sm')) {
+  body {
+    margin: theme('spacing.base');
+  }
+
+  html {
+    font-size: 11px;
+  }
+
+  .p-grid {
+    display: grid;
+    grid-template-rows: auto;
+    gap: 10px;
+  }
+}
+
+@media screen and (min-width: theme('screens.md')) {
+  body {
+    margin: theme('spacing.tablet');
+  }
+
+    .p-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+@media screen and (min-width: theme('screens.lg')) {
+  body {
+    margin: theme('spacing.laptop');
+  }
+}
+
+@media screen and (min-width: theme('screens.xl')) {
+  body {
+    margin: theme('spacing.desktop');
+    font-size: 13px;
+  }
+
+  html {
+    font-size: 13px;
+  }
+
+  .p-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
 }
