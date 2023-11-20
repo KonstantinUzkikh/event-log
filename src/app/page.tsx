@@ -24,6 +24,7 @@ export default function Home() {
   const setReadFilter = useEvents((state) => state.setReadFilter)
 
   const [windowWidth, setWindowWidth] = useState(1024)
+  const [windowHeight, setWindowHeight] = useState(850)
 
   const onReadFilter = (events: TEvent[]) => {
     return readFilter === 'unread'
@@ -75,7 +76,10 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const handleResize = () => setWindowWidth(window.innerWidth)
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth)
+        setWindowHeight(window.innerHeight)
+      }
       window.addEventListener('resize', handleResize)
       return () => window.removeEventListener('resize', handleResize)
     }
@@ -131,7 +135,9 @@ export default function Home() {
           </span>
         </div>
       </div>
-      {format === 'table' ? <EventsTable onFilter={onFilter} /> : <EventsCards onFilter={onFilter} />}
+      {format === 'table'
+        ? <EventsTable onFilter={onFilter} windowHeight={windowHeight} />
+        : <EventsCards onFilter={onFilter} windowHeight={windowHeight} />}
     </main>
   )
 }

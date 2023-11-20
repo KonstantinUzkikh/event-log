@@ -4,7 +4,8 @@ import { Column } from 'primereact/column'
 import { TEvent, useEvents } from '@/app/stor/eventsStor'
 import formatDate from '@/app/utils/formatDate'
 
-export default function EventsTable({ onFilter }: { onFilter: (events: TEvent[]) => TEvent[] }) {
+export default function EventsTable({ onFilter, windowHeight }:
+  { onFilter: (events: TEvent[]) => TEvent[]; windowHeight: number }) {
   const events = useEvents((state) => state.events)
   const toggleReadMessages = useEvents((state) => state.toggleReadMessages)
   const toggleReadAllMessages = useEvents((state) => state.toggleReadAllMessages)
@@ -55,8 +56,11 @@ export default function EventsTable({ onFilter }: { onFilter: (events: TEvent[])
   }
 
   return (
-    <div className='card'>
-      <DataTable value={onFilter(events)} paginator rows={25} // TODO:установить зависимость от размера экрана
+    <div className='card bg-transparent'>
+      <DataTable
+        value={onFilter(events)}
+        paginator
+        rows={windowHeight < 600 ? 10 : windowHeight < 730 ? 15 : windowHeight < 850 ? 20 : 25}
         paginatorTemplate='FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown'
         dataKey='id'
         selectionMode='multiple'

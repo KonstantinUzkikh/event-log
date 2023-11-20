@@ -6,7 +6,8 @@ import { TEvent, useEvents } from '@/app/stor/eventsStor'
 import formatDate from '@/app/utils/formatDate'
 import { Checkbox } from 'primereact/checkbox'
 
-export default function EventsCards({ onFilter }: { onFilter: (events: TEvent[]) => TEvent[] }) {
+export default function EventsCards({ onFilter, windowHeight }:
+  { onFilter: (events: TEvent[]) => TEvent[]; windowHeight: number }) {
   const events = useEvents((state) => state.events)
   const toggleReadMessages = useEvents((state) => state.toggleReadMessages)
 
@@ -72,13 +73,13 @@ export default function EventsCards({ onFilter }: { onFilter: (events: TEvent[])
   }
 
   return (
-    <div className='card'>
+    <div className='card bg-transparent'>
       <DataView
         value={onFilter(events)}
         itemTemplate={CardItem}
         layout='grid'
         paginator
-        rows={12} // TODO: добавить зависимость от размера экрана
+        rows={windowHeight < 400 ? 3 : windowHeight < 600 ? 6 : 9}
         paginatorPosition='bottom'
         paginatorTemplate='FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown'
         emptyMessage='События не найдены.'
